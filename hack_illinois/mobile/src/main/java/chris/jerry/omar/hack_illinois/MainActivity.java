@@ -1,17 +1,55 @@
 package chris.jerry.omar.hack_illinois;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.app.Activity;
 import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.Switch;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    private TextView switchStatus;
+    private Switch mySwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        switchStatus = (TextView) findViewById(R.id.switchStatus); //Store switch status
+        mySwitch = (Switch) findViewById(R.id.mySwitch); //Store switch variable content into mySwitch
+
+        //set the switch to ON (by default)
+        mySwitch.setChecked(true);
+        //attach a listener to check for changes in state
+        mySwitch.setOnCheckedChangeListener(new OnCheckedChangeListener(){
+
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView,
+                                     boolean isChecked) {
+
+            if(isChecked){
+                switchStatus.setText("Switch is currently ON");
+                //DO SOMETHING
+            }else{
+                switchStatus.setText("Switch is currently OFF");
+                //DO SOMETHING IFF OF
+            }
+
+        }
+        });
+
+        //-------------------------WHAT IS THIS USED FOOOOOOOOOOOOOOOOOOR-------------------
+        //check the current state before we display the screen
+        if(mySwitch.isChecked()){
+            switchStatus.setText("Switch is currently ON");
+        }
+        else {
+            switchStatus.setText("Switch is currently OFF");
+        }
     }
 
     @Override

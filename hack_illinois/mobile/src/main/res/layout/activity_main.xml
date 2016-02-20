@@ -11,6 +11,7 @@
         android:showText="true"
         android:textOff="@string/led_off"
         android:textOn="@string/led_on"
-        android:colorButtonNorma="#2196f3">
+        android:colorButtonNorma="#2196f3"
+        android:checked="false">
 
 </LinearLayout>
